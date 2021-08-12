@@ -6,8 +6,7 @@ export default async function  getApi(endPoint:string,method:any,body:any){
         data:body,
         url:"https://jsonplaceholder.typicode.com/"+endPoint,
         headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+            'Content-type': 'application/json; charset=UTF-8',
           },
     }).catch(er=>{
         console.log(er);

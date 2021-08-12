@@ -4,6 +4,8 @@ import User from './User/User.Reducer';
 import Todo from './User/Todo.reducer';
 import Post from './User/Posts.reducer';
 import Comments from './User/Comment.reducer';
+import Album from './User/Album.reducer';
+import Photo from './User/Photo.reducer';
 import thunk from 'redux-thunk';
 
 
@@ -12,7 +14,9 @@ var RootReducer=combineReducers({
     User,
     Todo,
     Post,
-    Comments
+    Comments,
+    Album,
+    Photo
 });
 
 const composeEnhancer =(window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||  compose

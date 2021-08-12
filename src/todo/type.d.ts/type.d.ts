@@ -81,3 +81,30 @@ interface CommentModel{
 type initStateComment={
     ArrayComment:CommentModel[]
 }
+
+
+
+interface AlbumsModel{
+    userId:number,
+    id:number,
+    title:number
+}
+
+
+type initStateAlbum={
+    ArrayAlbum:Array<AlbumsModel>
+}
+
+
+interface PhotoModel{
+    albumId:number,
+    id:number,
+    title:number,
+    url:string,
+    thumbnailUrl:string
+}
+
+
+type initStatePhoto={
+    ArrayPhoto:Array<PhotoModel>
+}

@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducer/store";
 import { GET_USER_DETAIL } from "./../../reducer/User/User.Reducer";
 import { Link } from 'react-router-dom';
-import { GET_ALL_USER, GET_USER_DATA_BY_ID_TODO, GET_USER_DATA_BY_ID_POST_ACTION } from './../../action/Home';
+import { GET_ALL_USER, GET_USER_DATA_BY_ID_TODO, GET_USER_DATA_BY_ID_POST_ACTION, GET_ALBUM_USER_BY_ID_ACTION } from './../../action/Home';
 import { GET_ALL_DATA_TODO_USER } from "../../reducer/User/Todo.reducer";
 import { GET_ALL_DATA_POST_USER } from "../../reducer/User/Posts.reducer";
+import { GET_ALL_ALBUM_USER } from "../../reducer/User/Album.reducer";
 
 interface UserItemTS {
     match: any;
@@ -25,8 +26,13 @@ const UserDetail: React.FC<UserItemTS> = ({ match }) => {
     useEffect(() => {
         dispatch(GET_USER_DATA_BY_ID_POST_ACTION(id))
     }, [dispatch,id]);
+
+    useEffect(() => {
+        dispatch(GET_ALBUM_USER_BY_ID_ACTION(id))
+    }, [dispatch,id]);
     const todoList=useSelector(GET_ALL_DATA_TODO_USER);
     const todoPost=useSelector(GET_ALL_DATA_POST_USER);
+    const todoAlbum=useSelector(GET_ALL_ALBUM_USER);
     return (
         <div className="User-detail">
             <div className="profile">
@@ -49,13 +55,14 @@ const UserDetail: React.FC<UserItemTS> = ({ match }) => {
                 <h4>MENU</h4>
                 <div className="profile-item">
                     <div>
-                        <p><Link to={`/todo/${id}`}>CountTodo:</Link>:</p>
+                        <p><Link to={`/todo/${id}`}>Todo:</Link>:</p>
                         <p><Link to={`/post/${id}`}>Post :</Link></p>
+                        <p><Link to={`/album/${id}`}>Album :</Link></p>
                     </div>
                     <div>
                         <p>{todoList?.length||0}</p>
                         <p>{todoPost?.length||0}</p>
-
+                        <p>{todoAlbum?.length||0}</p>
                     </div>
                 </div>
             </div>

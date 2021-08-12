@@ -5,6 +5,7 @@ import { GET_ALL_USER } from '../../action/Home';
 import { GET_ALL_DATA_USER } from '../../reducer/User/User.Reducer';
 import UserItem from './UserItem';
 import { UserModel } from '../../type.d.ts/type';
+// import { GET_ALL_DATA_TODO_USER } from '../../reducer/User/Todo.reducer';
 export default function Home() {
     const dispatch = useDispatch();
     const [input, setInput] = useState<string>("");
@@ -21,11 +22,12 @@ export default function Home() {
         }
     }, [Users])
     console.log(loading);
-    
+
+
     const showUser: any = (data: Array<UserModel>) => {
         var result = null;
         if (data.length > 0) {
-            if(input){
+            if (input) {
                 data = data.filter((dataS: UserModel) => {
                     return dataS.name.toLowerCase().indexOf(input) !== -1;
                 });
@@ -36,7 +38,7 @@ export default function Home() {
         }
         return result;
     }
-    const onInput=({target:{name,value}} : React.ChangeEvent<HTMLInputElement>)=>{
+    const onInput = ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>) => {
         setInput(value);
     }
     return (
